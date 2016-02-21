@@ -10,6 +10,8 @@ Additional Features (WIP)
 The technologies used are:
 - Realm
 - Retrofit
+- RoboGuice
+- OKHttp Mock Web Server
 - Material Design
   - Card View
   - Recycler View
