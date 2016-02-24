@@ -1,10 +1,11 @@
-# krogerCouponFinder
-Kroger Coupon Finder is an android application that aims to show a simple table view that efficiently scrolls through 100s of coupons available at Kroger.
+# MarvelCharacterFinder
+
+Marvel Character Finder is an android application that aims to show a simple table view that efficiently scrolls through 100s of marvel characters.
 
 Additional Features (WIP)
-- Offline Mode support - You will see the discounts previously loaded even if you are offline.
+- Offline Mode support - You will see the characters previously loaded even if you are offline.
 - Pull to refresh
-- New coupons will be fetched in background from Kroger at the following https://kroger.softcoin.com/p/np/4230/Kroger/coupons
+- New characters will be fetched in background
 - If the app is launched for the first time, offline, then it will have some sort of placeholder.
 
 The technologies used are:

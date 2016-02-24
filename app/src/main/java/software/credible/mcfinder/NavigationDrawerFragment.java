@@ -1,4 +1,4 @@
-package kcfinder.credible.software.krogercouponfinder;
+package software.credible.mcfinder;
 
 
 import android.app.Activity;
