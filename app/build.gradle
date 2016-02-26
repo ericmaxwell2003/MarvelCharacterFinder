@@ -1,5 +1,15 @@
 apply plugin: 'com.android.application'
 
+String marvelApiEndpoint = "http://gateway.marvel.com/v1/public"
+String marvelApiKey = System.getProperty('marvel.api.key') ?: "<YOU_NEED_AN_API_KEY>"
+String marvelApiReferrer = System.getProperty('marvel.api.referrer') ?: '<YOU_NEED_TO_ADD_A_REFERRER_ALLOWED_TO_MAKE_CALLS_USING_YOUR_API_KEY>'
+
+android.buildTypes.each { type ->
+    type.buildConfigField 'String', 'MARVEL_API_ENDPOINT', marvelApiEndpoint
+    type.buildConfigField 'String', 'MARVEL_API_KEY', marvelApiKey
+    type.buildConfigField 'String', 'MARVEL_API_REFERRER', marvelApiReferrer
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
