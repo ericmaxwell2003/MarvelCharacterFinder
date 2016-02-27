@@ -8,7 +8,7 @@ import java.util.Map;
 
 
 
-public class Result {
+public class MarvelCharacter {
 
     private Integer id;
     private String name;
