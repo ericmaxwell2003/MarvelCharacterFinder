@@ -2,10 +2,7 @@
 package software.credible.mcfinder.remote.dto;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 
 public class Data {
@@ -14,7 +11,7 @@ public class Data {
     private Integer limit;
     private Integer total;
     private Integer count;
-    private List<Result> results = new ArrayList<Result>();
+    private List<MarvelCharacter> marvelCharacters = new ArrayList<MarvelCharacter>();
 
 
     /**
@@ -92,19 +89,19 @@ public class Data {
     /**
      * 
      * @return
-     *     The results
+     *     The marvelCharacters
      */
-    public List<Result> getResults() {
-        return results;
+    public List<MarvelCharacter> getMarvelCharacters() {
+        return marvelCharacters;
     }
 
     /**
      * 
-     * @param results
-     *     The results
+     * @param marvelCharacters
+     *     The marvelCharacters
      */
-    public void setResults(List<Result> results) {
-        this.results = results;
+    public void setMarvelCharacters(List<MarvelCharacter> marvelCharacters) {
+        this.marvelCharacters = marvelCharacters;
     }
 
 
