@@ -14,7 +14,7 @@ public class ApplicationModule extends AbstractModule {
     }
 
     @Provides
-    public MarvelRemoteApi eventServiceProvider() {
+    public MarvelRemoteApi marvelServiceProvider() {
         try {
             return ServiceGenerator.createService(MarvelRemoteApi.class);
         } catch (Exception e) {
