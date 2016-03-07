@@ -32,6 +32,24 @@ android {
     }
 }
 
+
+apply plugin: "genymotion"
+
+genymotion {
+    config {
+        genymotionPath = "/Applications/Genymotion.app/Contents/MacOS"
+        verbose = true
+        taskLaunch = "connectedAndroidTestDebug"
+    }
+    devices {
+        nexus6p {
+            template "Google Nexus 6P - 6.0.0 - API 23 - 1440x2560"
+            deleteWhenFinish false
+            stopWhenFinish false
+        }
+    }
+}
+
 dependencies {
     // Android Library Dependencies
     compile fileTree(dir: 'libs', include: ['*.jar'])

@@ -20,7 +20,7 @@ public class ServiceGenerator {
             @Override
             public void intercept(RequestFacade request) {
                 request.addQueryParam("apikey", BuildConfig.MARVEL_API_KEY);
-                request.addHeader("Referrer", BuildConfig.MARVEL_API_REFERRER);
+                request.addHeader("Referer", BuildConfig.MARVEL_API_REFERRER);
             }
         });
         RestAdapter adapter = builder.build();
