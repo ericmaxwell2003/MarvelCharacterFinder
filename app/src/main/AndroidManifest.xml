@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <meta-data android:name="roboguice.modules" android:value="software.credible.mcfinder.ApplicationModule" />
+        <meta-data android:name="roboguice.modules"
+                   android:value="software.credible.mcfinder.guice.ApplicationModule" />
 
         <activity
             android:name=".view.CharacterListActivity"

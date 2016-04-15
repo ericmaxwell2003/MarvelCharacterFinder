@@ -1,5 +1,7 @@
 package software.credible.mcfinder.remote;
 
+import android.app.DownloadManager;
+
 import com.squareup.okhttp.OkHttpClient;
 
 import retrofit.RequestInterceptor;
@@ -9,21 +11,13 @@ import software.credible.mcfinder.BuildConfig;
 
 public class ServiceGenerator {
 
-    public static <S> S createService(Class<S> serviceClass) {
-
-        RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setEndpoint(BuildConfig.MARVEL_API_ENDPOINT)
-                .setLogLevel(RestAdapter.LogLevel.FULL);
-
-        builder.setClient(new OkClient(new OkHttpClient()));
-        builder.setRequestInterceptor(new RequestInterceptor() {
-            @Override
-            public void intercept(RequestFacade request) {
-                request.addQueryParam("apikey", BuildConfig.MARVEL_API_KEY);
-                request.addHeader("Referer", BuildConfig.MARVEL_API_REFERRER);
-            }
-        });
-        RestAdapter adapter = builder.build();
+    public static <S> S createService(Class<S> serviceClass, String url, RequestInterceptor requestInterceptor) {
+        RestAdapter adapter = new RestAdapter.Builder()
+                .setEndpoint(url)
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setClient(new OkClient(new OkHttpClient()))
+                .setRequestInterceptor(requestInterceptor)
+                .build();
         return adapter.create(serviceClass);
     }
 
