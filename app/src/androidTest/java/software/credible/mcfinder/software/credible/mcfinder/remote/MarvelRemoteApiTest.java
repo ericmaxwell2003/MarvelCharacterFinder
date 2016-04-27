@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,6 +25,8 @@ import software.credible.mcfinder.R;
 import software.credible.mcfinder.guice.AppProperties;
 import software.credible.mcfinder.guice.MarvelRemoteApiProvider;
 import software.credible.mcfinder.remote.MarvelRemoteApi;
+import software.credible.mcfinder.remote.dto.Data;
+import software.credible.mcfinder.remote.dto.MarvelCharacter;
 import software.credible.mcfinder.remote.dto.MarvelResultWrapper;
 
 public class MarvelRemoteApiTest extends ApplicationTestCase<Application> {
@@ -72,7 +75,28 @@ public class MarvelRemoteApiTest extends ApplicationTestCase<Application> {
 
         MarvelResultWrapper resultWrapper = marvelRemoteApi.fetchAllCharacters();
 
-        fail("Finish expectations");
+        assertEquals("<a href=\"http://marvel.com\">Data provided by Marvel. © 2016 MARVEL</a>", resultWrapper.getAttributionHTML());
+        assertEquals("Data provided by Marvel. © 2016 MARVEL", resultWrapper.getAttributionText());
+        assertEquals(Integer.valueOf(200), resultWrapper.getCode());
+
+        Data data = resultWrapper.getData();
+        assertEquals(Integer.valueOf(2), data.getCount());
+        assertEquals(Integer.valueOf(0), data.getOffset());
+        assertEquals(Integer.valueOf(1485), data.getTotal());
+        assertEquals(Integer.valueOf(22), data.getLimit());
+
+        List<MarvelCharacter> characters = data.getMarvelCharacters();
+        assertEquals(2, characters.size());
+
+        MarvelCharacter testCharacter = characters.get(1);
+
+        // These are all the properites we care about at this time, we can add more later if we start using additional properties.
+        assertEquals("Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed by a Gamma energy explosion, " +
+                "A-Bomb's thick, armored skin is just as strong and powerful as it is blue. And when he curls into action, he uses it like a giant bowling ball of destruction! ", testCharacter.getDescription());
+        assertEquals("A-Bomb (HAS)", testCharacter.getName());
+        assertEquals("http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16", testCharacter.getThumbnail().getPath());
+        assertEquals("jpg", testCharacter.getThumbnail().getExtension());
+
 
         shutdownMockWebServer();
     }

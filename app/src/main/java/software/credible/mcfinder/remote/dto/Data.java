@@ -1,6 +1,8 @@
 
 package software.credible.mcfinder.remote.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,8 @@ public class Data {
     private Integer limit;
     private Integer total;
     private Integer count;
+
+    @SerializedName("results")
     private List<MarvelCharacter> marvelCharacters = new ArrayList<MarvelCharacter>();
 
 
